@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Informasi Kabupaten Banyumas | Info & Wisata Terkini</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. NAVBAR MENU ATAS -->
+    <header class="navbar">
+        <a href="#" class="logo-link">
+            <h1 class="logo-text">BANYUMAS<span>PORTAL</span></h1>
+        </a>
+        <nav class="nav-links">
+            <a href="#">Beranda</a>
+            <a href="#katalog">Berita</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 2. HERO SLIDER UTAMA (Mendukung Flex-Scroll) -->
+        <div class="hero-slider-wrapper">
+            <div class="hero-slider-container" id="hero-slider">
+                
+                <!-- Slide 1 -->
+                <div class="hero-slide-item">
+                    <img src="https://unsplash.com" alt="Festival Budaya Banyumas">
+                    <div class="hero-slide-overlay"></div>
+                    <div class="hero-slide-content">
+                        <h1><a href="#">Meriah, Festival Rewanda Bojana Kembali Digelar di Cilongok</a></h1>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="hero-slide-item">
+                    <img src="https://unsplash.com" alt="Keindahan Alam Baturraden">
+                    <div class="hero-slide-overlay"></div>
+                    <div class="hero-slide-content">
+                        <h1><a href="#">Pesona Baru Jembatan Kaca di Lokawisata Alam Baturraden</a></h1>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="hero-slide-item">
+                    <img src="https://unsplash.com" alt="Kuliner Mendoan">
+                    <div class="hero-slide-overlay"></div>
+                    <div class="hero-slide-content">
+                        <h1><a href="#">Menikmati Sensasi Gurih Mendoan Jumbo Asli Sawangan Purwokerto</a></h1>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Tombol Panah Slider -->
+            <button class="hero-nav-btn hero-btn-left" onclick="moveHeroSlide(-1)">❮</button>
+            <button class="hero-nav-btn hero-btn-right" onclick="moveHeroSlide(1)">❯</button>
+        </div>
+
+        <!-- 3. GRID MENU UTAMA (Konten Terbimbing) -->
+        <div class="grid-menu-section">
+            <div class="portal-grid-menu">
+                <a href="#" class="grid-menu-item item-umkm">
+                    <span class="grid-icon">🏪</span>
+                    <span class="grid-title">Info UMKM</span>
+                </a>
+                <a href="#" class="grid-menu-item item-kuliner">
+                    <span class="grid-icon">🍲</span>
+                    <span class="grid-title">Kuliner</span>
+                </a>
+                <a href="#" class="grid-menu-item item-wisata">
+                    <span class="grid-icon">⛰️</span>
+                    <span class="grid-title">Wisata</span>
+                </a>
+                <a href="#" class="grid-menu-item item-event">
+                    <span class="grid-icon">🎉</span>
+                    <span class="grid-title">Berita & Event</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- 4. KATALOG BERITA BERDIRI TEGAK (1 Baris 1 Kartu) -->
+        <section class="features" id="katalog">
+            <div class="section-heading">
+                <h2>📰 Berita & Info Terkini</h2>
+                <p>Kabar terbaru seputar event daerah, kebudayaan, dan info menarik di Kabupaten Banyumas.</p>
+            </div>
+
+            <div class="feature-container">
+                <!-- Kartu Berita 1 -->
+                <article class="feature-card">
+                    <a href="#"><img src="https://unsplash.com" alt="Berita"></a>
+                    <div class="card-content">
+                        <h3><a href="#">📰 Kemeriahan Kirab Prosesi Pusaka Hari Jadi Kabupaten Banyumas</a></h3>
+                    </div>
+                </article>
+
+                <!-- Kartu Berita 2 -->
+                <article class="feature-card">
+                    <a href="#"><img src="https://unsplash.com" alt="Berita"></a>
+                    <div class="card-content">
+                        <h3><a href="#">⛰️ Eksplorasi Curug Cipendok, Air Terjun Tersembunyi di Lereng Slamet</a></h3>
+                    </div>
+                </article>
+            </div>
+
+            <!-- 5. NAVIGASI PAGINASI MINIMALIS -->
+            <div class="pagination">
+                <a href="#" class="page-link">❮</a>
+                <span class="page-link active">1 / 3</span>
+                <a href="#" class="page-link">❯</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- 6. FOOTER BAWAH -->
+    <footer>
+        <p>&copy; 2026 Portal Banyumas. Hak Cipta Dilindungi.</p>
+    </footer>
+
+    <!-- JAVASCRIPT SLIDER (SINKRON FLEX-SCROLL) -->
+    <script>
+        let currentHeroSlideIndex = 0;
+
+        function moveHeroSlide(direction) {
+            const kontainer = document.getElementById('hero-slider');
+            if (!kontainer) return;
+
+            const slides = kontainer.querySelectorAll('.hero-slide-item');
+            if (slides.length <= 1) return;
+
+            currentHeroSlideIndex += direction;
+
+            if (currentHeroSlideIndex >= slides.length) {
+                currentHeroSlideIndex = 0;
+            } else if (currentHeroSlideIndex < 0) {
+                currentHeroSlideIndex = slides.length - 1;
+            }
+
+            const lebarSlide = kontainer.clientWidth;
+            kontainer.scrollLeft = currentHeroSlideIndex * lebarSlide;
+        }
+
+        // Jalankan slide otomatis setiap 5 detik
+        let autoPlayHero = setInterval(() => { moveHeroSlide(1); }, 5000);
+
+        // Reset timer jika panah di-klik manual
+        document.querySelectorAll('.hero-nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                clearInterval(autoPlayHero);
+                autoPlayHero = setInterval(() => { moveHeroSlide(1); }, 5000);
+            });
+        });
+    </script>
+</body>
+</html>

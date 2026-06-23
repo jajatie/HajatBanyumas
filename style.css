@@ -1,0 +1,209 @@
+/* =================================================== */
+/* 1. LAYOUT DASAR GLOBAL (CONTOH MOBILE APP 480PX)   */
+/* =================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    color: #222;
+    line-height: 1.5;
+    background-color: #f0f2f5; 
+    max-width: 480px;          
+    margin: 0 auto;            
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1); 
+    position: relative;
+}
+
+main { width: 100%; }
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-link { text-decoration: none; }
+.logo-text { font-size: 18px; color: #222; font-weight: 800; letter-spacing: 0.5px; }
+.logo-text span { color: #007bff; }
+
+.nav-links a {
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 15px;
+    transition: color 0.2s ease;
+}
+.nav-links a:hover { color: #007bff; }
+
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 25px 20px;
+    font-size: 13px;
+    border-top: 1px solid #eee;
+    margin-top: 30px;
+}
+
+/* =================================================== */
+/* 2. GAYA HERO SLIDER (HORIZONTAL FLEX-SCROLL)        */
+/* =================================================== */
+.hero-slider-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.hero-slider-container {
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+.hero-slider-container::-webkit-scrollbar { display: none; }
+
+.hero-slide-item {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 55vh;
+    position: relative;
+    scroll-snap-align: start;
+}
+
+.hero-slide-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hero-slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.85) 100%);
+    z-index: 1;
+}
+
+.hero-slide-content {
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 2;
+}
+.hero-slide-content h1 { font-size: 18px; line-height: 1.4; font-weight: 700; margin: 0; }
+.hero-slide-content h1 a { color: #ffffff; text-decoration: none; text-shadow: 0 2px 4px rgba(0,0,0,0.6); }
+
+.hero-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 10px;
+    cursor: pointer;
+    z-index: 10;
+    user-select: none;
+}
+.hero-nav-btn:active { background-color: rgba(0, 0, 0, 0.7); }
+.hero-btn-left { left: 0; border-radius: 0 4px 4px 0; }
+.hero-btn-right { right: 0; border-radius: 4px 0 0 4px; }
+
+/* =================================================== */
+/* 3. MENU GRID TOMBOL KOTAK                           */
+/* =================================================== */
+.grid-menu-section { padding: 20px 12px 5px 12px; background-color: #ffffff; }
+.portal-grid-menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    width: 100%;
+}
+.grid-menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 10px;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease;
+}
+.grid-menu-item:active { transform: scale(0.96); }
+.grid-icon { font-size: 28px; margin-bottom: 6px; }
+.grid-title { font-size: 13px; font-weight: 700; color: #ffffff; }
+
+.item-umkm { background: linear-gradient(135deg, #17a2b8, #117a8b); }
+.item-kuliner { background: linear-gradient(135deg, #ffc107, #d39e00); }
+.item-wisata { background: linear-gradient(135deg, #28a745, #1e7e34); }
+.item-event { background: linear-gradient(135deg, #e04f5f, #c83747); }
+
+/* =================================================== */
+/* 4. KATALOG DIRECTORY & KARTU BERITA                 */
+/* =================================================== */
+.features { padding: 25px 12px; text-align: center; }
+.section-heading { margin-bottom: 20px; text-align: center; }
+.section-heading h2 { font-size: 20px; color: #222; margin: 0; }
+.section-heading p { font-size: 13px; color: #666; margin-top: 4px; }
+
+.feature-container { display: flex; flex-direction: column; gap: 16px; width: 100%; }
+.feature-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #eaeaea;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    text-align: left;
+    width: 100%;            
+}
+.feature-card img { width: 100%; height: 180px; object-fit: cover; display: block; transition: transform 0.3s ease; }
+.feature-card a:hover img { transform: scale(1.02); }
+
+.card-content h3 { font-size: 14px; line-height: 1.4; padding: 15px; margin: 0; font-weight: 700; }
+.card-content h3 a { color: #222; text-decoration: none; }
+.card-content h3 a:hover { color: #007bff; }
+
+/* =================================================== */
+/* 5. GAYA TOMBOL PENOMORAN (PAGINASI)                */
+/* =================================================== */
+.pagination { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 25px 0 10px; }
+.pagination .page-link {
+    display: inline-block;
+    padding: 8px 14px;
+    text-decoration: none;
+    color: #007bff;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: bold;
+}
+.pagination .page-link.active { background-color: #007bff; color: #ffffff; border-color: #007bff; }
+.pagination .page-link:hover:not(.active) { background-color: #f1f1f1; }
